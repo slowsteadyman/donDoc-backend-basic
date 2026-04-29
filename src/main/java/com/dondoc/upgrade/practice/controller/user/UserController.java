@@ -1,6 +1,6 @@
 package com.dondoc.upgrade.practice.controller.user;
 
-import com.dondoc.upgrade.practice.dto.Users;
+import com.dondoc.upgrade.practice.dto.user.Users;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
-public class UsersController {
+public class UserController {
     @GetMapping("")
     public List<Users> getUsers() {
         return Arrays.asList(

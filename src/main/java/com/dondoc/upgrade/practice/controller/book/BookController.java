@@ -1,8 +1,8 @@
 package com.dondoc.upgrade.practice.controller.book;
 
-import com.dondoc.upgrade.practice.dto.Categories;
-import com.dondoc.upgrade.practice.dto.MonthlyHistory;
-import com.dondoc.upgrade.practice.dto.Records;
+import com.dondoc.upgrade.practice.dto.book.Categories;
+import com.dondoc.upgrade.practice.dto.book.MonthlyHistory;
+import com.dondoc.upgrade.practice.dto.book.Records;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

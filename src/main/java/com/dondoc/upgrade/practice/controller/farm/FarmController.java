@@ -1,7 +1,7 @@
 package com.dondoc.upgrade.practice.controller.farm;
 
-import com.dondoc.upgrade.practice.dto.FarmMembers;
-import com.dondoc.upgrade.practice.dto.Farms;
+import com.dondoc.upgrade.practice.dto.farm.FarmMembers;
+import com.dondoc.upgrade.practice.dto.farm.Farms;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

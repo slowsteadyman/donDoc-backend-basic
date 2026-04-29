@@ -1,4 +1,4 @@
-package com.dondoc.upgrade.practice.dto;
+package com.dondoc.upgrade.practice.dto.book;
 
 import lombok.Getter;
 
