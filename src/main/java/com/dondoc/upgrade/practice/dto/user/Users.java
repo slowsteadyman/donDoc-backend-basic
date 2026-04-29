@@ -1,4 +1,4 @@
-package com.dondoc.upgrade.practice.dto;
+package com.dondoc.upgrade.practice.dto.user;
 
 import java.time.LocalDateTime;
 

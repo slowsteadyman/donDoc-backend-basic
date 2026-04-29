@@ -1,7 +1,8 @@
-package com.dondoc.upgrade.practice.controller;
+package com.dondoc.upgrade.practice.controller.user;
 
-import com.dondoc.upgrade.practice.dto.Users;
+import com.dondoc.upgrade.practice.dto.user.Users;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
@@ -9,8 +10,9 @@ import java.util.Arrays;
 import java.util.List;
 
 @RestController
-public class UsersController {
-    @GetMapping("/users")
+@RequestMapping("/api/users")
+public class UserController {
+    @GetMapping("")
     public List<Users> getUsers() {
         return Arrays.asList(
             new Users(1, "kyujin123", "pass1", "최규진", 25, 1, 1, 3000000, 0.6, LocalDateTime.now()),
