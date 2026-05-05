@@ -1,6 +1,8 @@
 package com.dondoc.upgrade.practice.controller.user;
 
 import com.dondoc.upgrade.practice.dto.user.Users;
+import com.dondoc.upgrade.practice.repository.UserRepository;
+import java.util.Map;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,7 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
-    @GetMapping("")
+    /*@GetMapping("")
     public List<Users> getUsers() {
         return Arrays.asList(
             new Users(1, "kyujin123", "pass1", "최규진", 25, 1, 1, 3000000, 0.6, LocalDateTime.now()),
@@ -21,5 +23,16 @@ public class UserController {
             new Users(4, "dondoc_user", "pass4", "박민수", 24, 1, 1, 2000000, 0.4, LocalDateTime.now()),
             new Users(5, "tester01", "pass5", "정다은", 26, 2, 2, 3500000, 0.8, LocalDateTime.now())
         );
+    }*/
+
+    private final UserRepository userRepository;
+
+    public UserController(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    @GetMapping("")
+    public List<Map<String, Object>> getUsers() {
+        return userRepository.findAll();
     }
 }
