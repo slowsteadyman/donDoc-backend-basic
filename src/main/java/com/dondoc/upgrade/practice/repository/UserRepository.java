@@ -12,9 +12,5 @@ public class UserRepository {
     public UserRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
-
-    public List<Map<String, Object>> findAll() {
-        return jdbcTemplate.queryForList("SELECT * FROM users");
-    }
 }
 
