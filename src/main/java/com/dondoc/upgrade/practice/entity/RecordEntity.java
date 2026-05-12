@@ -1,4 +1,4 @@
-package com.dondoc.upgrade.practice.dto.book;
+package com.dondoc.upgrade.practice.entity;
 
 import lombok.Getter;
 
@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
-public class Records {
+public class RecordEntity {
     private int id;
     private int userId;
     private int categoryId;
@@ -16,7 +16,7 @@ public class Records {
     private LocalDate recordDate;
     private LocalDateTime createdAt;
 
-    public Records(int id, int userId, int categoryId, int amount, String description, String memo, LocalDate recordDate, LocalDateTime createdAt) {
+    public RecordEntity(int id, int userId, int categoryId, int amount, String description, String memo, LocalDate recordDate, LocalDateTime createdAt) {
         this.id = id;
         this.userId = userId;
         this.categoryId = categoryId;
