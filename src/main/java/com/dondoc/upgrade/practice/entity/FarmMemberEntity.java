@@ -1,17 +1,19 @@
-package com.dondoc.upgrade.practice.dto.farm;
+package com.dondoc.upgrade.practice.entity;
 
 import lombok.Getter;
 
 import java.time.LocalDateTime;
+import lombok.Setter;
 
 @Getter
-public class FarmMembers {
+@Setter
+public class FarmMemberEntity {
     private int id;
     private int userId;
     private int farmId;
     private LocalDateTime joinedAt;
 
-    public FarmMembers(int id, int userId, int farmId, LocalDateTime joinedAt) {
+    public FarmMemberEntity(int id, int userId, int farmId, LocalDateTime joinedAt) {
         this.id = id;
         this.userId = userId;
         this.farmId = farmId;

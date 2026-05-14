@@ -1,10 +1,9 @@
 package com.dondoc.upgrade.practice.repository;
 
-import com.dondoc.upgrade.practice.entity.FarmEntity;
+import com.dondoc.upgrade.practice.entity.FarmMemberEntity;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.util.List;
-import java.util.Map;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -13,25 +12,25 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class FarmRepository {
+public class FarmMemberRepository {
     private final JdbcTemplate jdbcTemplate;
 
-    public FarmRepository(JdbcTemplate jdbcTemplate) {
+    public FarmMemberRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public List<FarmEntity> findAll() {
+    public List<FarmMemberEntity> findAll() {
         return jdbcTemplate.query(
-            "SELECT * FROM farms",
-            new BeanPropertyRowMapper<>(FarmEntity.class)
+            "SELECT * FROM farm_members",
+            new BeanPropertyRowMapper<>(FarmMemberEntity.class)
         );
     }
 
-    public FarmEntity findById(int id) {
+    public FarmMemberEntity findById(int id) {
         try {
             return jdbcTemplate.queryForObject(
-                "SELECT * FROM farms WHERE id = ?",
-                new BeanPropertyRowMapper<>(FarmEntity.class),
+                "SELECT * FROM farm_members WHERE id = ?",
+                new BeanPropertyRowMapper<>(FarmMemberEntity.class),
                 id
             );
         } catch (EmptyResultDataAccessException e) {
@@ -39,35 +38,30 @@ public class FarmRepository {
         }
     }
 
-    public FarmEntity save(FarmEntity farm) {
-        if (findById(farm.getId()) == null) {
+    public FarmMemberEntity save(FarmMemberEntity farmMember) {
+        if (findById(farmMember.getId()) == null) {
             KeyHolder keyHolder = new GeneratedKeyHolder();
 
             jdbcTemplate.update(con -> {
                 PreparedStatement ps = con.prepareStatement(
-                    """
-                    INSERT INTO farms (name, created_at)
-                    VALUES (?, ?)
-                    """,
+                    "INSERT INTO farm_members (user_id, farm_id)",
                     Statement.RETURN_GENERATED_KEYS
                 );
-                ps.setString(1, farm.getName());
-                ps.setObject(2, farm.getCreatedAt());
+                ps.setInt(1, farmMember.getFarmId());
+                ps.setInt(2, farmMember.getFarmId());
+                ps.setObject(3, farmMember.getJoinedAt());
                 return ps;
             }, keyHolder);
 
             int generatedId = keyHolder.getKey().intValue();
             return findById(generatedId);
+
         } else {
             jdbcTemplate.update(
-                """
-                UPDATE farms
-                SET name = ?, created_at = ?
-                WHERE id = ?
-                """,
-                farm.getName(), farm.getCreatedAt(), farm.getId()
+                "UPDATE farm_members SET user_id = ?, farm_id = ?, joined_at = ? WHERE id = ?",
+                farmMember.getUserId(), farmMember.getFarmId(), farmMember.getJoinedAt(), farmMember.getId()
             );
-            return findById(farm.getId());
+            return findById(farmMember.getId());
         }
     }
 }
