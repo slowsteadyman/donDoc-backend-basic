@@ -3,8 +3,10 @@ package com.dondoc.upgrade.practice.entity;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
+import lombok.Setter;
 
 @Getter
+@Setter
 public class FarmEntity {
     private int id;
     private String name;

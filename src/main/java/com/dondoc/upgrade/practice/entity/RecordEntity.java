@@ -4,8 +4,10 @@ import lombok.Getter;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import lombok.Setter;
 
 @Getter
+@Setter
 public class RecordEntity {
     private int id;
     private int userId;

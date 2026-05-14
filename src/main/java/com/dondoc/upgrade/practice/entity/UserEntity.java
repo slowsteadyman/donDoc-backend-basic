@@ -1,7 +1,11 @@
 package com.dondoc.upgrade.practice.entity;
 
 import java.time.LocalDateTime;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class UserEntity {
     private int id;
     private String userId;
