@@ -3,10 +3,12 @@ package com.dondoc.upgrade.practice.entity;
 import lombok.Getter;
 
 import java.time.LocalDate;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class MonthlyHistoryEntity {
     private int id;
     private int userId;

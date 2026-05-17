@@ -3,10 +3,12 @@ package com.dondoc.upgrade.practice.entity;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class FarmEntity {
     private int id;
     private String name;
