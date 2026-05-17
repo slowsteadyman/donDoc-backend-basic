@@ -1,15 +1,12 @@
-package com.dondoc.upgrade.practice.entity;
+package com.dondoc.upgrade.practice.dto.user;
 
 import java.time.LocalDateTime;
-import lombok.Data;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Getter
-@Setter
-@NoArgsConstructor
-public class UserEntity {
+@AllArgsConstructor
+public class UserDto {
     private int id;
     private String userId;
     private String userPassword;

@@ -1,33 +1,30 @@
 package com.dondoc.upgrade.practice.controller;
 
-import com.dondoc.upgrade.practice.dto.farm.FarmMembers;
-import com.dondoc.upgrade.practice.dto.farm.Farms;
-import com.dondoc.upgrade.practice.repository.FarmRepository;
-import java.util.Map;
+import com.dondoc.upgrade.practice.dto.farm.FarmDto;
+import com.dondoc.upgrade.practice.dto.farm.FarmMemberDto;
+import com.dondoc.upgrade.practice.service.FarmMemberService;
+import com.dondoc.upgrade.practice.service.FarmService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.LocalDateTime;
-import java.util.Arrays;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/farms")
+@RequiredArgsConstructor
 public class FarmController {
-    private final FarmRepository farmRepository;
-
-    public FarmController(FarmRepository farmRepository) {
-        this.farmRepository = farmRepository;
-    }
+    private final FarmService farmService;
+    private final FarmMemberService farmMemberService;
 
     @GetMapping("")
-    public List<Map<String, Object>> getFarms() {
-        return farmRepository.findFarms();
+    public List<FarmDto> getFarms() {
+        return farmService.getFarms();
     }
 
     @GetMapping("/members")
-    public List<Map<String, Object>> getFarmMembers() {
-        return farmRepository.findFarmMembers();
+    public List<FarmMemberDto> getFarmMembers() {
+        return farmMemberService.getFarmMembers();
     }
 }
